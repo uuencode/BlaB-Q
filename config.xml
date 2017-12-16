@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns       = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "com.justblab.bwsqr"
+        versionCode = "2"
+        version     = "1.0.2">
+
+<name>ChatApp</name>
+<description>Chat app for BlaB! WS and BlaB! WS Pro.</description>
+<author href="https://justblab.com" email="nospam@justblab.com">BlaB Team</author>
+
+<plugin name="cordova-plugin-device" spec="1.1.7" />
+<plugin name="cordova-plugin-media" spec="3.0.0" />
+<plugin name="cordova-plugin-whitelist" spec="1.3.3" />
+<plugin name="phonegap-plugin-barcodescanner" spec="6.0.8">
+<param name="CAMERA_USAGE_DESCRIPTION" value="Scan barcode URL." />
+</plugin>
+
+<allow-navigation href="*" />
+
+<preference name="permissions"   value="none"/>
+<preference name="orientation"   value="default" />       <!-- all: default means both landscape and portrait are enabled -->
+<preference name="target-device" value="universal" />      <!-- all: possible values handset, tablet, or universal -->
+<preference name="fullscreen"    value="false" />          <!-- all: hides the status bar at the top of the screen -->
+<preference name="webviewbounce" value="false" />          <!-- ios: control whether the screen 'bounces' when scrolled beyond the top -->
+
+<icon src="icon.png" />
+<access origin="*" /> - a wildcard access tag allows access to all external resource.
+
+</widget>

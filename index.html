@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head><title>...</title>
+<meta charset="utf-8" />
+</head>
+<body>
+
+<div id="splashscreen" onclick="scann()" style="position:fixed;left:0px;top:0px;width:100%;height:100%">
+<img src="blabws.svg" style="position:fixed;top:15%;left:15%;width:70%;height:70%" alt="" /></div>
+
+<div id="nourl" style="position:fixed;top:8px;left:8px;right:8px;padding:8px;background-color:#eee;color:#000;text-align:center;display:none">Invalid chat URL!</div>
+<iframe id="blabwsiframe" src="" style="position:fixed;left:0px;top:0px;width:100%;height:100%;border-width:0;overflow:hidden;display:none"></iframe>
+
+<div id="closeappscreen" onclick="cancel_exit()" style="position:fixed;left:0px;top:0px;width:100%;height:100%;background-color:#000;opacity:0.7;display:none"></div>
+<div id="closeappbutton" onclick="navigator.app.exitApp()" style="padding-top:20px;padding-bottom:20px;text-align:center;font-weight:bold;position:fixed;left:1%;bottom:5px;right:1%;color:#fff;background-color:#E91E63;border-radius:5px;display:none">EXIT</div>
+
+<script src="cordova.js"></script>
+
+<script>
+
+url='xxxxx/index.php?mobileapp=2';
+
+s_screen=document.getElementById('splashscreen');
+b_screen=document.getElementById('blabwsiframe');
+h_screen=document.getElementById('closeappscreen');
+c_screen=document.getElementById('closeappbutton');
+
+document.addEventListener('deviceready', onDeviceReady, false);
+
+function onDeviceReady(){
+document.addEventListener('backbutton', ask_exit, false);
+window.addEventListener('message',function(event){play_s(event.data)},false)}
+
+function load_blabws(){
+s_screen.style.display='none';
+b_screen.style.display='block';
+b_screen.src=url;}
+
+function ask_exit(){
+if(typeof wait2exit=='number'){clearTimeout(wait2exit);}
+h_screen.style.display='block';
+c_screen.style.display='block';
+wait2exit=setTimeout('cancel_exit()',3000)}
+
+function cancel_exit(){
+h_screen.style.display='none';
+c_screen.style.display='none';}
+
+function pgpath(){
+path=window.location.pathname;
+path=path.substr( path,path.length-10)
+if(device.platform=='Android'){path='file://'+path}
+return path}
+
+function play_s(x){
+if(x>0){ 
+switch(x){
+case 2: y='2.mp3';break;
+case 3: y='3.mp3';break;
+case 4: y='4.mp3';break;
+default:y='1.mp3';break}
+z=pgpath();z=z+y;
+mp3s=new Media(z);
+mp3s.play()}}
+
+function createCookie(name,value,days) {
+var date = new Date();
+date.setTime(date.getTime() + (days*24*60*60*1000));
+expires = "; expires=" + date.toUTCString();
+document.cookie = name + "=" + value + expires + "; path=/";}
+
+function readCookie(name) {
+var nameEQ = name + "=";
+var ca = document.cookie.split(';');
+for(var i=0;i < ca.length;i++) {var c = ca[i];
+while (c.charAt(0)==' ') c = c.substring(1,c.length);
+if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);}
+return null}
+
+function scann(){
+cordova.plugins.barcodeScanner.scan(
+function(result){
+if(result.cancelled==true){return}
+if(result.text.length>8){
+res=result.text;
+if(res.search('blabws://')<0){document.getElementById('nourl').style.display='block';return}
+res=res.replace('blabws://',''); 
+url=url.replace('xxxxx',res);
+createCookie('bwsurl',url,365);
+load_blabws();
+}},
+
+function (error) {return;},
+
+{
+preferFrontCamera : false, // iOS and Android
+showFlipCameraButton : false, // iOS and Android
+showTorchButton : false, // iOS and Android
+torchOn: false, // Android, launch with the torch switched on (if available)
+prompt : "Place the chat QR code inside the scan area!", // Android
+resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
+formats : "QR_CODE", // default: all but PDF_417 and RSS_EXPANDED
+disableAnimations : true, // iOS
+disableSuccessBeep: true // iOS and Android
+});}
+
+already_in=readCookie('bwsurl')
+
+if(already_in){url=already_in;load_blabws()}
+else{wait2load=setTimeout('scann()',500);}
+
+</script>
+</body></html>

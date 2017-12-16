@@ -12,7 +12,7 @@ You can create a QR code image easily using any of the online QR generators. The
 
 ## Permissions
 
-The app lists phone, microphone, storage and camera - it is a PhoneGap media plugin requirement. You only need to enable `camera` in order to scan the QR code.
+The app lists `phone`, `microphone`, `storage` and `camera` - it is a PhoneGap media plugin requirement. You only need to enable `camera` in order to scan the QR code.
 
 
 ## License

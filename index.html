@@ -8,7 +8,7 @@
 <div id="splashscreen" onclick="scann()" style="position:fixed;left:0px;top:0px;width:100%;height:100%">
 <img src="blabws.svg" style="position:fixed;top:15%;left:15%;width:70%;height:70%" alt="" /></div>
 
-<div id="nourl" style="position:fixed;top:8px;left:8px;right:8px;padding:8px;background-color:#eee;color:#000;text-align:center;display:none">Invalid chat URL!</div>
+<div id="nourl" style="position:fixed;top:8px;left:8px;right:8px;padding:8px;background-color:#333;color:#fff;text-align:center">Tap &amp; scan a chat QR code.</div>
 <iframe id="blabwsiframe" src="" style="position:fixed;left:0px;top:0px;width:100%;height:100%;border-width:0;overflow:hidden;display:none"></iframe>
 
 <div id="closeappscreen" onclick="cancel_exit()" style="position:fixed;left:0px;top:0px;width:100%;height:100%;background-color:#000;opacity:0.7;display:none"></div>
@@ -83,7 +83,7 @@ function(result){
 if(result.cancelled==true){return}
 if(result.text.length>8){
 res=result.text;
-if(res.search('blabws://')<0){document.getElementById('nourl').style.display='block';return}
+if(res.search('blabws://')<0){document.getElementById('nourl').innerHTML='Invalid chat URL!';return}
 res=res.replace('blabws://',''); 
 url=url.replace('xxxxx',res);
 createCookie('bwsurl',url,365);
@@ -98,8 +98,8 @@ showFlipCameraButton : false, // iOS and Android
 showTorchButton : false, // iOS and Android
 torchOn: false, // Android, launch with the torch switched on (if available)
 prompt : "Place the chat QR code inside the scan area!", // Android
-resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
-formats : "QR_CODE", // default: all but PDF_417 and RSS_EXPANDED
+resultDisplayDuration: 500, // Android, display scanned text for X ms
+formats : "QR_CODE", // default: all
 disableAnimations : true, // iOS
 disableSuccessBeep: true // iOS and Android
 });}
@@ -107,7 +107,6 @@ disableSuccessBeep: true // iOS and Android
 already_in=readCookie('bwsurl')
 
 if(already_in){url=already_in;load_blabws()}
-else{wait2load=setTimeout('scann()',500);}
 
 </script>
 </body></html>

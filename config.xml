@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns       = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-        id          = "com.justblab.bwsqr"
+        id          = "com.justblab.bwsq"
         versionCode = "2"
         version     = "1.0.2">
 
-<name>ChatApp</name>
+<name>BlaB! WS Q</name>
 <description>Chat app for BlaB! WS and BlaB! WS Pro.</description>
-<author href="https://justblab.com" email="nospam@justblab.com">BlaB Team</author>
+<author href="https://justblab.com" email="justblabcom@gmail.com">BlaB Team</author>
 
 <plugin name="cordova-plugin-device" spec="1.1.7" />
 <plugin name="cordova-plugin-media" spec="3.0.0" />

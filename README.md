@@ -19,8 +19,8 @@ Although the app lists phone, microphone, storage and camera because of the Phon
 
 MIT
 
-Website: https://justblab.com
+## Links
 
-GitHub: https://github.com/uuencode/BlaB-WS-Q
-
-Google Play: 
+* Website: https://justblab.com
+* GitHub: https://github.com/uuencode/BlaB-WS-Q
+* Google Play: https://play.google.com/store/apps/details?id=com.justblab.bwsq

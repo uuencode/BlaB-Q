@@ -7,7 +7,7 @@ BlaB! WS Q is a PhoneGap app (Android/IOS) for [BlaB! WS](https://justblab.com) 
 
 ## QR code
 
-You can create a QR code image easily using any of the online QR generators. The QR code should start with `blabws://` and end without a trailing slash - `blabws://https://YOURSITE.COM/chat`
+You can create a QR code image easily using any of the online QR generators. The QR code should start with `blabws:` and end without a trailing slash - `blabws:https://YOURSITE.COM/chat`
 
 
 ## Permissions

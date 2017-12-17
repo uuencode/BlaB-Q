@@ -8,7 +8,7 @@
 <div id="splashscreen" onclick="scann()" style="position:fixed;left:0px;top:0px;width:100%;height:100%">
 <img src="blabws.svg" style="position:fixed;top:15%;left:15%;width:70%;height:70%" alt="" /></div>
 
-<div id="infoline" style="position:fixed;bottom:8px;left:8px;right:8px;padding:8px;background-color:#333;color:#eee;border-radius:5px;text-align:center">Tap &amp; scan a chat QR code.</div>
+<div id="infoline" style="position:fixed;bottom:8px;left:8px;right:8px;padding:8px;text-align:center"></div>
 <iframe id="blabwsiframe" src="" style="position:fixed;left:0px;top:0px;width:100%;height:100%;border-width:0;overflow:hidden;display:none"></iframe>
 
 <div id="closeappscreen" onclick="cancel_exit()" style="position:fixed;left:0px;top:0px;width:100%;height:100%;background-color:#000;opacity:0.7;display:none"></div>
@@ -18,7 +18,7 @@
 
 <script>
 
-url='xxxxx/index.php?mobileapp=2';
+url='#';
 
 s_screen=document.getElementById('splashscreen');
 b_screen=document.getElementById('blabwsiframe');
@@ -83,9 +83,12 @@ function(result){
 if(result.cancelled==true){return}
 if(result.text.length>8){
 res=result.text;
-if(res.search('blabws://')<0){document.getElementById('infoline').innerHTML='Invalid chat URL!';return}
-res=res.replace('blabws://',''); 
-url=url.replace('xxxxx',res);
+if(res.search('blabws:')<0 || res.search('http')<0){document.getElementById('infoline').innerHTML='Invalid chat URL!';return}
+
+res=res.split('blabws:'); res=res[1];
+if(res.search('blabwsbridge')>0){url=res;}
+else{url=res+'/index.php?mobileapp=2';}
+
 createCookie('bwsurl',url,365);
 load_blabws();
 }},
@@ -107,6 +110,6 @@ disableSuccessBeep: true // iOS and Android
 already_in=readCookie('bwsurl')
 
 if(already_in){url=already_in;load_blabws()}
-
+else{document.getElementById('infoline').innerHTML='Tap &amp; scan a chat QR code.'}
 </script>
 </body></html>

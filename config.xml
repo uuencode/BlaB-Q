@@ -2,8 +2,8 @@
 <widget xmlns       = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "com.justblab.bwsq"
-        versionCode = "2"
-        version     = "1.0.2">
+        versionCode = "4"
+        version     = "1.0.4">
 
 <name>BlaB! WS Q</name>
 <description>Chat app for BlaB! WS and BlaB! WS Pro.</description>

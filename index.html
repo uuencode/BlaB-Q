@@ -78,13 +78,14 @@ if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);}
 return null}
 
 function scann(){
+infoline=document.getElementById('infoline')
 cordova.plugins.barcodeScanner.scan(
 function(result){
 if(result.cancelled==true){return}
 if(result.text.length>8){
 res=result.text;
-if(res.search('blabws:')<0 || res.search('http')<0){document.getElementById('infoline').innerHTML='Invalid chat URL!';return}
-
+if(res.search('blabws:')<0 || res.search('http')<0){infoline.innerHTML='Invalid chat URL!';return}
+infoline.innerHTML='';
 res=res.split('blabws:'); res=res[1];
 if(res.search('blabwsbridge')>0){url=res;}
 else{url=res+'/index.php?mobileapp=2';}

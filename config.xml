@@ -2,8 +2,8 @@
 <widget xmlns       = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "com.justblab.bwsq"
-        versionCode = "5"
-        version     = "1.0.5">
+        versionCode = "6"
+        version     = "1.0.6">
 
 <name>BlaB! WS Q</name>
 <description>Chat app for BlaB! WS and BlaB! WS Pro.</description>
@@ -25,6 +25,7 @@
 <preference name="webviewbounce" value="false" />          <!-- ios: control whether the screen 'bounces' when scrolled beyond the top -->
 
 <icon src="icon.png" />
+<splash src="splash.png" />
 <access origin="*" /> - a wildcard access tag allows access to all external resource.
 
 </widget>

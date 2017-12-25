@@ -74,8 +74,9 @@ case 3: y='3.mp3';break;
 case 4: y='4.mp3';break;
 default:y='1.mp3';break}
 z=pgpath();z=z+y;
-mp3s=new Media(z);
-mp3s.play()}}
+
+var mdr=new Media(z,function onSuccess(){mdr.release()},function onError(e){console.log(e)});
+mdr.play()}}
 
 function createCookie(name,value,days) {
 var date = new Date();
